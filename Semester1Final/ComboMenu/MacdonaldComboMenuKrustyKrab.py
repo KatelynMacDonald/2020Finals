@@ -208,6 +208,7 @@ while ui!="done":                               #while the user isn't done with 
     thePersonsOrder=orderFunction(ui)
     mainOrder.append(thePersonsOrder[0])        #this makes what the order of each person is and appends it to the main order
     subtotal+=thePersonsOrder[1]                #takes the subtotal from the function and makes it the subtotal for a global variable so you  can use it later
+    print(f"Your order was {(str(', '.join(thePersonsOrder[0])))}")
     ui=input("Would you like to have another order? (when you are done ordering type 'done') REMEMBER: You can only edit your meal while you are inside the order\n ").lower()
 
 
@@ -216,10 +217,10 @@ taxAmount=tax(subtotal)
 print("\nOrder:")
 for i in range(len(mainOrder)):
     print("\tOrder ", i+1 ,":", (str(', '.join(mainOrder[i]))))
-print("Subtotal = $", subtotal)
-print("Tax = $" , taxAmount)
+print("Subtotal = $", "{:.2f}".format(subtotal))            #https://www.kite.com/python/answers/how-to-print-a-float-with-two-decimal-places-in-python#:~:text=Use%20str.,float%20with%20two%20decimal%20places&text=format(number)%20with%20%22%7B,string%20to%20print%20the%20float.
+print("Tax = $" , "{:.2f}".format(taxAmount))               # above is how to print 2 decimal places
 finalAmount=subtotal+taxAmount
-print("Total Amount =$",finalAmount)
+print("Total Amount =$","{:.2f}".format(finalAmount))
 
 
 
